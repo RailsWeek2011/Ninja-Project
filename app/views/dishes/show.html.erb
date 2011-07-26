@@ -1,0 +1,21 @@
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Making</th>
+    <th>Ingredient</th>
+  </tr>
+
+<% @recipes.each do |recipe| %>
+  <tr>
+    <td><%= recipe.name %></td>
+    <td><%= recipe.making %></td>
+    <td>
+        <% recipe.needed_ingredients.each do |ni| %>
+            <%= ni.ingredient.name + " " + ni.quantity.to_s + " " + ni.unit %> <br />
+        <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+<br />
+

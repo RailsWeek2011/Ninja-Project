@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NinjaProject</title>
+        <%= stylesheet_link_tag    "application" %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <div class="banner"></div>
+        <div class="navigation">
+            <div class="homeBtn">[<%= link_to "Home", home_path %>]</div>
+            <div class="recipeBtn">[<%= link_to "Rezepte", dishes_path  %>]</div>
+            <div class="ingredientBtn">[Zutaten]</div>
+            <div class="searchBtn">[<%= link_to "Suche", search_path %>]</div>
+        </div>
+        <div class="content">
+            <%= yield %>
+        </div> <div class="search"></div>
+    </body>
+</html>
+     <!--
+#link_to "Home", home_path
+
+# link_to "Suche", search_path
+     -->

@@ -1,0 +1,29 @@
+<h1>Listing needed_ingredients</h1>
+
+<table>
+  <tr>
+    <th>Recipe</th>
+    <th>Ingredient</th>
+    <th>Quantity</th>
+    <th>Unit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @needed_ingredients.each do |needed_ingredient| %>
+  <tr>
+    <td><%= needed_ingredient.recipe %></td>
+    <td><%= needed_ingredient.ingredient %></td>
+    <td><%= needed_ingredient.quantity %></td>
+    <td><%= needed_ingredient.unit %></td>
+    <td><%= link_to 'Show', needed_ingredient %></td>
+    <td><%= link_to 'Edit', edit_needed_ingredient_path(needed_ingredient) %></td>
+    <td><%= link_to 'Destroy', needed_ingredient, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Needed ingredient', new_needed_ingredient_path %>

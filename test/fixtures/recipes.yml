@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  making: MyText
+  dish: 
+  recipe_tags: 
+  author: 
+
+two:
+  name: MyString
+  making: MyText
+  dish: 
+  recipe_tags: 
+  author: 
