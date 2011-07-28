@@ -1,0 +1,25 @@
+<h1>Listing assessment_recipes</h1>
+
+<table>
+  <tr>
+    <th>Recipe</th>
+    <th>Assessment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assessment_recipes.each do |assessment_recipe| %>
+  <tr>
+    <td><%= assessment_recipe.recipe %></td>
+    <td><%= assessment_recipe.assessment %></td>
+    <td><%= link_to 'Show', assessment_recipe %></td>
+    <td><%= link_to 'Edit', edit_assessment_recipe_path(assessment_recipe) %></td>
+    <td><%= link_to 'Destroy', assessment_recipe, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Assessment recipe', new_assessment_recipe_path %>

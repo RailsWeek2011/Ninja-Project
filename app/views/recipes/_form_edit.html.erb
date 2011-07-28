@@ -1,0 +1,41 @@
+<%= form_for(@recipe) do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Name (optional)' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Gericht' %><br />
+    <%= f.collection_select(:dish_id, Dish.all, :id, :name ) %>
+  </div>
+  <div class="fieldL">
+    <%= f.label 'Zubereitung' %><br /><br />
+    <%= f.text_area( :making, :size => "55x20") %>
+  </div>
+  <div class="fieldR" id="ing">
+    <%= label_tag 'Zutaten' %><br /><br />
+    <% i=0 %>
+    <% NeededIngredient.where("recipe_id=?", @recipe.id).each do |ni| %>
+        <%= select_tag("needed_ingredient[ingredient]["+i.to_s+"]", options_for_select(Ingredient.all.map{|ing|[ing.name, ing.id]}, ni.ingredient_id ) ) %>
+        <%= text_field_tag "needed_ingredient[quantity]["+i.to_s+"]", ni.quantity, :size => 2 %>
+        <%= select_tag "needed_ingredient[unit]["+i.to_s+"]", options_for_select({"" => 0, "Stueck" => 1, "kg" => 2, "gr" => 3, "Liter" => 4, "ml" => 5}, unit_to_i(ni.unit)) %>
+        <% i = i + 1 %>
+    <% end %>
+    <%= hidden_field_tag "ingredientCount", (i-1) %>
+    <%= button_tag "+", :id => "addButton" , :type => "button", :onclick => "addInput()" %>
+  </div>
+  <div class="actionsRecipe">
+    <%= f.submit 'Speichern' %>
+  </div>
+<% end %>

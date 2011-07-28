@@ -1,14 +1,14 @@
 class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
-  def index
-    @ingredients = Ingredient.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @ingredients }
-    end
-  end
+  #def index
+  #  @ingredients = Ingredient.all
+  #
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @ingredients }
+  #  end
+  #end
 
   # GET /ingredients/1
   # GET /ingredients/1.json
@@ -25,7 +25,6 @@ class IngredientsController < ApplicationController
   # GET /ingredients/new.json
   def new
     @ingredient = Ingredient.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @ingredient }
@@ -76,7 +75,7 @@ class IngredientsController < ApplicationController
     @ingredient.destroy
 
     respond_to do |format|
-      format.html { redirect_to ingredients_url }
+      format.html { redirect_to home_url }
       format.json { head :ok }
     end
   end

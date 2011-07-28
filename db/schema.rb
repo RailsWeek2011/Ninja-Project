@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725211311) do
+ActiveRecord::Schema.define(:version => 20110728104005) do
+
+  create_table "assessments", :force => true do |t|
+    t.integer  "count"
+    t.decimal  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "dishes", :force => true do |t|
     t.string   "name"

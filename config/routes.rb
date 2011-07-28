@@ -1,12 +1,20 @@
 NinjaProject::Application.routes.draw do
 
+  devise_for :users
+
   root :to => "home#index"
 
   get "home/index", :as => :home
 
+  get "home/admin", :as => :admin
+
   get "search/index", :as => :search
 
   post "search/results", :as => :search_results
+
+  resources :assessment_recipes
+
+  resources :assessments
 
   resources :tags
 

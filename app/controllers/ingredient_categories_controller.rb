@@ -2,7 +2,7 @@ class IngredientCategoriesController < ApplicationController
   # GET /ingredient_categories
   # GET /ingredient_categories.json
   def index
-    @ingredient_categories = IngredientCategory.all
+    @ingredient_categories = IngredientCategory.where("level=0")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +13,10 @@ class IngredientCategoriesController < ApplicationController
   # GET /ingredient_categories/1
   # GET /ingredient_categories/1.json
   def show
-    @ingredient_category = IngredientCategory.find(params[:id])
-
+    @ingredient_categories = IngredientCategory.where("parent_id=?",params[:id])
+    if @ingredient_categories.empty?
+      @ingredients = Ingredient.where("ingredient_category_id=?",params[:id])
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @ingredient_category }
@@ -41,7 +43,11 @@ class IngredientCategoriesController < ApplicationController
   # POST /ingredient_categories.json
   def create
     @ingredient_category = IngredientCategory.new(params[:ingredient_category])
-
+    unless @ingredient_category.parent.nil?
+      @ingredient_category.level = @ingredient_category.parent.level + 1
+    else
+      @ingredient_category.level = 0
+    end
     respond_to do |format|
       if @ingredient_category.save
         format.html { redirect_to @ingredient_category, notice: 'Ingredient category was successfully created.' }

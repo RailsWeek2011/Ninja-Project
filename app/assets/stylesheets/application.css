@@ -15,20 +15,25 @@
 
 div.banner
 {
-    background-color: #ff0000;
+    background-color: #c0c0c0;
     width: 800px;
     height: 50px;
+    line-height:50px;
+    text-align: center;
+    font-size: 18pt;
     margin-left: auto ;
     margin-right: auto ;
 }
 
 div.navigation
 {
-    background-color: #00ff00;
-    width: 800px;
+    background-color: #c0c0c0;
+    width: 798px;
     height: 50px;
     margin-left: auto;
     margin-right: auto;
+    border-style: solid;
+    border-width: 1px;
 }
 
 div.navigation div
@@ -41,25 +46,32 @@ div.navigation div
     text-align: center;
     border-style: solid;
     border-width: 1px;
+    margin-top: -1px;
 }
 
 div.homeBtn
 {
+    margin-left: -1px;
 }
 
 div.recipeBtn
 {
-    margin-left: 100px;
+    margin-left: 99px;
 }
 
 div.ingredientBtn
 {
-    margin-left: 200px;
+    margin-left: 199px;
 }
 
 div.searchBtn
 {
-    margin-left: 300px;
+    margin-left: 299px;
+}
+
+div.adminBtn
+{
+    margin-left: 399px;
 }
 
 div.content

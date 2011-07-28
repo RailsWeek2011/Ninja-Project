@@ -1,20 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @ingredient_category.name %>
-</p>
-
-<p>
-  <b>Parent:</b>
-  <%= @ingredient_category.parent_id %>
-</p>
-
-<p>
-  <b>Level:</b>
-  <%= @ingredient_category.level %>
-</p>
-
-
-<%= link_to 'Edit', edit_ingredient_category_path(@ingredient_category) %> |
-<%= link_to 'Back', ingredient_categories_path %>
+<% unless @ingredient_categories.empty?  %>
+    <% @ingredient_categories.each do |ingredient_category| %>
+        <%= link_to ingredient_category.name, ingredient_category_path(ingredient_category)  %>
+    <% end %>
+<% else %>
+    <% @ingredients.each do |ingredient| %>
+        <%= link_to ingredient.name, ingredient_path(ingredient)  %>
+    <% end %>
+<% end %>
+<br />

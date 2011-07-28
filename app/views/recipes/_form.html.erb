@@ -17,19 +17,23 @@
   </div>
   <div class="field">
     <%= f.label 'Gericht' %><br />
-    <%= f.collection_select("dish", Dish.all, :id, :name ) %>
+    <%= f.collection_select(:dish_id, Dish.all, :id, :name ) %>
   </div>
-  <div class="fieldL">
-    <%= f.label 'Zubereitung' %><br /><br />
-    <%= f.text_area( :making, :size => "55x20") %>
-  </div>
-  <div class="fieldR">
-    <%= f.label 'Zutaten' %><br /><br />
-    <%= f.collection_select("ingredients", Ingredient.all, :id, :name ) %>
-    <%= f.text_field :name %>
-    <%= f.select("ingredients", options_for_select({"" => 0, "Stueck" => 1, "kg" => 2, "gr" => 3, "Liter" => 4, "ml" => 5}) ) %>
-  </div>
-  <div class="actions">
+
+      <div class="fieldL">
+        <%= f.label 'Zubereitung' %><br /><br />
+        <%= f.text_area( :making, :size => "55x20") %>
+      </div>
+      <div class="fieldR" id="ing">
+        <%= label_tag 'Zutaten' %><br /><br />
+        <%= select_tag("needed_ingredient[ingredient][0]", options_for_select(Ingredient.all.map{|ing|[ing.name, ing.id]})) %>
+        <%= text_field_tag("needed_ingredient[quantity][0]", nil, :size => 2) %>
+        <%= select_tag("needed_ingredient[unit][0]", options_for_select({"" => 0, "Stueck" => 1, "kg" => 2, "gr" => 3, "Liter" => 4, "ml" => 5})) %>
+        <%= button_tag("+", :id => "addButton" , :type => "button", :onclick => "addInput()") %>
+        <%= hidden_field_tag "ingredientCount", 0 %>
+      </div>
+
+  <div class="actionsRecipe">
     <%= f.submit 'Erstellen' %>
   </div>
 <% end %>

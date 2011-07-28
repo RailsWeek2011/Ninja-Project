@@ -1,0 +1,33 @@
+<% @assessment = assessment if @assessment.nil? %>
+<%= form_for(@assessment) do |f| %>
+  <% if @assessment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assessment.errors.count, "error") %> prohibited this assessment from being saved:</h2>
+
+      <ul>
+      <% @assessment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :recipe_id %>
+  <div class="field">
+    <table cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="centercell">1</td>
+        <td class="centercell">2</td>
+        <td class="centercell">3</td>
+        <td class="centercell">4</td>
+        <td class="centercell">5</td>
+      </tr>
+      <tr>
+        <td><%= f.radio_button :rating, "1" %></td>
+        <td><%= f.radio_button :rating, "2" %></td>
+        <td><%= f.radio_button :rating, "3" %></td>
+        <td><%= f.radio_button :rating, "4" %></td>
+        <td><%= f.radio_button :rating, "5" %></td>
+        <td><%= f.submit "Bewerten" %></td>
+      </tr>
+    </table>
+<% end %>

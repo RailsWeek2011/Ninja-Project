@@ -21,3 +21,42 @@ function displayDiv()
         document.getElementById("homeBtn").style.display = "block";
     }
 }
+
+function addInput()
+{
+    var i = parseInt(document.getElementById('ingredientCount').value);
+    if(i<15)
+    {
+        var ingredient = document.getElementById('needed_ingredient_ingredient_' + i);
+        var quantity   = document.getElementById('needed_ingredient_quantity_' + i);
+        var unit       = document.getElementById('needed_ingredient_unit_' + i);
+        var fieldR     = document.getElementById('ing');
+
+        i++;
+
+        var clone_ingredient = ingredient.cloneNode(true);
+        var clone_quantity   = quantity.cloneNode(false);
+        var clone_unit       = unit.cloneNode(true);
+        var addbutton        = document.getElementById('addButton');
+
+        clone_ingredient.setAttribute('id', 'needed_ingredient_ingredient_' + i);
+        clone_ingredient.setAttribute('name', 'needed_ingredient[ingredient][' + i + ']');
+        clone_ingredient.selectedIndex = 0;
+
+        clone_quantity.setAttribute('id', 'needed_ingredient_quantity_' + i);
+        clone_quantity.setAttribute('name', 'needed_ingredient[quantity][' + i + ']');
+        clone_quantity.value='';
+
+        clone_unit.setAttribute('id', 'needed_ingredient_unit_' + i );
+        clone_unit.setAttribute('name', 'needed_ingredient[unit][' + i + ']');
+        clone_unit.selectedIndex = 0;
+
+        fieldR.removeChild(addbutton);
+        fieldR.appendChild(clone_ingredient);
+        fieldR.appendChild(clone_quantity);
+        fieldR.appendChild(clone_unit);
+        fieldR.appendChild(addbutton);
+
+        document.getElementById('ingredientCount').value = i;
+    }
+}

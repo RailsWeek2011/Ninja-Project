@@ -11,9 +11,12 @@
     <td><%= recipe.making %></td>
     <td>
         <% recipe.needed_ingredients.each do |ni| %>
-            <%= ni.ingredient.name + " " + ni.quantity.to_s + " " + ni.unit %> <br />
+        <%= link_to ni.ingredient.name, ingredient_path(ni.ingredient) %>
+        <%= " " + ni.quantity.to_s + " " + ni.unit %> <br />
         <% end %>
     </td>
+    <td><%= link_to "Bearbeiten", edit_recipe_path(recipe) %></td>
+    <td><%= render :partial => "assessments/form", :locals => { :assessment => Assessment.new(:recipe => recipe) } %></td>
   </tr>
 <% end %>
 </table>

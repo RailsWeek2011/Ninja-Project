@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Count:</b>
+  <%= @assessment.count %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @assessment.rating %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @assessment.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_assessment_path(@assessment) %> |
+<%= link_to 'Back', assessments_path %>

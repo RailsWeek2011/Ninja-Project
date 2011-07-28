@@ -7,12 +7,13 @@
         <%= csrf_meta_tags %>
     </head>
     <body>
-        <div class="banner"></div>
+        <div class="banner">Kochbuch</div>
         <div class="navigation">
             <div class="homeBtn">[<%= link_to "Home", home_path %>]</div>
             <div class="recipeBtn">[<%= link_to "Rezepte", dishes_path  %>]</div>
-            <div class="ingredientBtn">[Zutaten]</div>
+            <div class="ingredientBtn">[<%= link_to "Zutaten", ingredient_categories_path %>]</div>
             <div class="searchBtn">[<%= link_to "Suche", search_path %>]</div>
+            <div class="adminBtn">[<%= link_to "Admin", admin_path %>]</div>
         </div>
         <div class="content">
             <%= yield %>

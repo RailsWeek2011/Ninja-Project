@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :ingredient_category_id %><br />
-    <%= f.text_field :ingredient_category_id %>
+    <%= f.collection_select(:ingredient_category_id, IngredientCategory.all, :id, :name ) %>
   </div>
   <div class="actions">
     <%= f.submit %>

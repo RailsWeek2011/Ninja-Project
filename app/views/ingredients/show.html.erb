@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @ingredient.name %>
-</p>
+<b>Name:</b>
+<%= @ingredient.name %>
+
 
 <p>
   <b>Description:</b>
@@ -12,9 +10,7 @@
 
 <p>
   <b>Ingredient category:</b>
-  <%= @ingredient.ingredient_category_id %>
+  <%= IngredientCategory.find(@ingredient.ingredient_category_id).name %>
 </p>
 
-
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %>

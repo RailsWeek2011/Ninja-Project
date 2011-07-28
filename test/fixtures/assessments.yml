@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  count: 1
+  rating: 9.99
+  comment: MyText
+
+two:
+  count: 1
+  rating: 9.99
+  comment: MyText
