@@ -14,6 +14,7 @@ class DishesController < ApplicationController
   # GET /dishes/1.json
   def show
     @recipes = Recipe.where("dish_id=?",params[:id])
+    @dish = Dish.find(params[:id])
       respond_to do |format|
         format.html #  recipe_in_categorie.html.erb
         format.json { render json: @recipes }

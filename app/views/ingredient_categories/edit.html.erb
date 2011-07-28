@@ -1,6 +1,5 @@
+<%= mininav(["Zutaten", (link_to "Kategorien", ingredient_categories_path)] + getCategoryParent(@ingredient_category) + [(link_to @ingredient_category.name, ingredient_category_path(@ingredient_category)), "Bearbeiten"]) %>
 
 <br />
-Kategorie bearbeiten
-<br /><br />
 
 <%= render 'form' %>

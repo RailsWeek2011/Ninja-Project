@@ -1,3 +1,5 @@
+ <%= mininav(["Zutaten", (link_to "Kategorien", ingredient_categories_path)] +
+              getCategory(@ingredient) + [@ingredient.name]) %>
 
 <b>Name:</b>
 <%= @ingredient.name %>

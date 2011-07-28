@@ -1,24 +1,42 @@
-<table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Making</th>
-    <th>Ingredient</th>
-  </tr>
+<%= mininav( ["Rezepte", (link_to "Gerichte", dishes_path), @dish.name]  ) %>
 
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= recipe.name %></td>
-    <td><%= recipe.making %></td>
-    <td>
-        <% recipe.needed_ingredients.each do |ni| %>
-        <%= link_to ni.ingredient.name, ingredient_path(ni.ingredient) %>
-        <%= " " + ni.quantity.to_s + " " + ni.unit %> <br />
-        <% end %>
-    </td>
-    <td><%= link_to "Bearbeiten", edit_recipe_path(recipe) %></td>
-    <td><%= render :partial => "assessments/form", :locals => { :assessment => Assessment.new(:recipe => recipe) } %></td>
-  </tr>
+<br/>
+
+<% unless @recipes.empty? %>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Making</th>
+        <th>Ingredient</th>
+      </tr>
+
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td>
+          <%= recipe.name %>
+          <br/>
+          <% if (count = recipe.assessments.count) > 0 %>
+          <% rating=0 %>
+          <% recipe.assessments.each do |ass| rating += ass.rating end %>
+          <%= (rating / count).to_s + "(" + count.to_s + ")" %>
+          <% end %>
+        </td>
+        <td><%= recipe.making %></td>
+        <td>
+            <% recipe.needed_ingredients.each do |ni| %>
+            <%= link_to ni.ingredient.name, ingredient_path(ni.ingredient) %>
+            <%= " " + ni.quantity.to_s + " " + ni.unit %> <br />
+            <% end %>
+        </td>
+        <td>
+            <%= link_to "Bearbeiten", edit_recipe_path(recipe) %>
+            <br/>
+            <%= link_to 'Entfernen', recipe, confirm: 'Are you sure?', method: :delete %>
+        </td>
+        <td><%= render :partial => "assessments/form", :locals => { :assessment => Assessment.new(:recipe => recipe) } %></td>
+      </tr>
+    <% end %>
+    </table>
+<% else %>
+    Keine Rezepte zum Gericht <%= @dish.name %> gefunden!
 <% end %>
-</table>
-<br />
-

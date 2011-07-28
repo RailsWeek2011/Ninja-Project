@@ -16,6 +16,9 @@ class IngredientCategoriesController < ApplicationController
     @ingredient_categories = IngredientCategory.where("parent_id=?",params[:id])
     if @ingredient_categories.empty?
       @ingredients = Ingredient.where("ingredient_category_id=?",params[:id])
+      if @ingredients.empty?
+        @ingredient_category = IngredientCategory.find(params[:id])
+      end
     end
     respond_to do |format|
       format.html # show.html.erb

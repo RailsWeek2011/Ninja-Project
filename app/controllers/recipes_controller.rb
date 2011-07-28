@@ -106,10 +106,11 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1.json
   def destroy
     @recipe = Recipe.find(params[:id])
+    dish = @recipe.dish
     @recipe.destroy
 
     respond_to do |format|
-      format.html { redirect_to home_url }
+      format.html { redirect_to dish_path(dish) }
       format.json { head :ok }
     end
   end

@@ -1,8 +1,4 @@
-
-<br />
-Rezept erstellen
-<br />
-<br />
+<%= mininav(["Rezepte", (link_to @recipe.dish.name, dishes_path), (link_to "Nr."+@recipe.id.to_s, dishes_path),"Bearbeiten"]) %>
 
 <%= render 'form_edit' %>
 

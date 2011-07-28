@@ -1,3 +1,5 @@
+<%= mininav(["Admin"]) %>
+<br/>
 <table border="1">
   <tr>
     <td>Zutat Kategorie</td>
@@ -13,14 +15,14 @@
   </tr>
   <tr>
     <td><%= link_to "Edit", edit_ingredient_category_path(IngredientCategory.last) %></td>
-    <td><%= link_to "Edit", edit_ingredient_path(Ingredient.first) %></td>
-    <td><%= link_to "Edit", edit_dish_path(Dish.first) %></td>
-    <td><%= link_to "Edit", edit_recipe_path(Recipe.first) %></td>
+    <td><%= link_to "Edit", edit_ingredient_path(Ingredient.last) %></td>
+    <td><%= link_to "Edit", edit_dish_path(Dish.last) %></td>
+    <td><%= link_to "Edit", edit_recipe_path(Recipe.last) %></td>
   </tr>
   <tr>
     <td><%= link_to 'Delete', IngredientCategory.last, confirm: 'Are you sure?', method: :delete %></td>
     <td><%= link_to "Delete", Ingredient.last, confirm: 'Are you sure?', method: :delete %></td>
-    <td><%= link_to "Delete", home_path %></td>
-    <td><%= link_to "Delete", home_path %></td>
+    <td><%= link_to "Delete", Dish.last, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to "Delete", Recipe.last, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 </table>

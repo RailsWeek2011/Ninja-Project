@@ -1,3 +1,6 @@
+<%= mininav(["Zutaten", "Kategorien"]) %>
+
+<br/>
 
 <% @ingredient_categories.each do |ingredient_category| %>
 
@@ -5,6 +8,7 @@
 
 <% end %>
 
+<br />
 <br />
 
 <%= link_to 'New Ingredient category', new_ingredient_category_path %>

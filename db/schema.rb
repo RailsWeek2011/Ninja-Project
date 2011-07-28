@@ -15,9 +15,12 @@ ActiveRecord::Schema.define(:version => 20110728104005) do
   create_table "assessments", :force => true do |t|
     t.integer  "count"
     t.decimal  "rating"
+    t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "assessments", ["recipe_id"], :name => "index_assessments_on_recipe_id"
 
   create_table "dishes", :force => true do |t|
     t.string   "name"
