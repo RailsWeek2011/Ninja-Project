@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :parent_id %><br />
+    <%= f.label "Oberkategorie:" %><br />
     <%= f.collection_select(:parent_id, IngredientCategory.all, :id, :name, {:include_blank => true} ) %>
   </div>
   <div class="actions">

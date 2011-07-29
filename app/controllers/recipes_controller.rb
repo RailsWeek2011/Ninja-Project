@@ -43,6 +43,7 @@ class RecipesController < ApplicationController
     ingredients = params[:needed_ingredient][:ingredient]
     quantity = params[:needed_ingredient][:quantity]
     unit = params[:needed_ingredient][:unit]
+    @recipe.dish = Dish.find(params[:recipe][:dish_id])
     i=0
 
     ingredients.each_value do |value|
@@ -72,7 +73,7 @@ class RecipesController < ApplicationController
   # PUT /recipes/1.json
   def update
     @recipe = Recipe.find(params[:id])
-
+    @recipe.dish = Dish.find(params[:recipe][:dish_id])
     ingredients = params[:needed_ingredient][:ingredient]
     quantity = params[:needed_ingredient][:quantity]
     unit = params[:needed_ingredient][:unit]

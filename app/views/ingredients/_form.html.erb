@@ -16,11 +16,11 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label "Beschreibung:" %><br />
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :ingredient_category_id %><br />
+    <%= f.label "Kategorie:" %><br />
     <%= f.collection_select(:ingredient_category_id, IngredientCategory.all, :id, :name ) %>
   </div>
   <div class="actions">

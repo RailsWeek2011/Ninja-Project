@@ -1,14 +1,14 @@
 <% unless @ingredient_categories.empty?  %>
-    <%= mininav(["Zutaten"] + getCategoryParent(@ingredient_categories.first)) %>
+    <%= mininav(["Zutaten",(link_to "Kategorien", ingredient_categories_path)] + getCategoryParent(@ingredient_categories.first)) %>
     <% @ingredient_categories.each do |ingredient_category| %>
         <%= link_to ingredient_category.name, ingredient_category_path(ingredient_category)  %>
     <% end %>
 <% else %>
     <% if @ingredients.empty? %>
-        <%= mininav(["Zutaten"] + getCategoryParent(@ingredient_category) + [@ingredient_category.name ]) %>
+        <%= mininav(["Zutaten", (link_to "Kategorien", ingredient_categories_path)] + getCategoryParent(@ingredient_category) + [@ingredient_category.name]) %>
         <%= link_to "Neue Zutat", new_ingredient_path %>
     <% else %>
-        <%= mininav(["Zutaten"] + getIngredientCategory(@ingredients.first)) %>
+        <%= mininav(["Zutaten",(link_to "Kategorien", ingredient_categories_path)] + getIngredientCategory(@ingredients.first)) %>
         <% @ingredients.each do |ingredient| %>
             <%= link_to ingredient.name, ingredient_path(ingredient)  %>
         <% end %>

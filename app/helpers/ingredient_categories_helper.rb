@@ -2,7 +2,7 @@ module IngredientCategoriesHelper
   def getIngredientCategory ingredient
     ic = ingredient.ingredient_category
 
-    hierarchy = [(link_to ic.name, ingredient_category_path(ic))]
+    hierarchy = [ic.name]
 
     while ic.parent
       hierarchy.insert(0, (link_to ic.parent.name, ingredient_category_path(ic.parent)))
@@ -13,15 +13,18 @@ module IngredientCategoriesHelper
   end
 
   def getCategoryParent category
-    cp = category.parent
 
-    hierarchy = [(link_to cp.name, ingredient_category_path(cp))]
+    hierarchy = [category.name]
+    if category.parent
+      cp = category.parent
 
-    while cp.parent
-      hierarchy.insert(0, (link_to cp.parent.name, ingredient_category_path(cp.parent)))
-      cp = cp.parent
+      hierarchy = [(link_to cp.name, ingredient_category_path(cp.parent))]
+
+      while cp.parent
+        hierarchy.insert(0, (link_to cp.parent.name, ingredient_category_path(cp.parent)))
+        cp = cp.parent
+      end
     end
-
     hierarchy
   end
 end
